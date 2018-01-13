@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_barcode_scanner"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="#ffffff"
+    tools:context="com.example.dsouchon.myapplication.BarcodeScanner">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="TagNumber"
+            android:id="@+id/editTagNumber"
+            android:text="TAG NUMBER"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:textColorHint="#000000"
+            android:textSize="24dp"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <Button
+            android:id="@+id/scanner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="scanBar"
+            android:text="Placedholder"
+            android:background="@drawable/button_state"
+            style="@style/button_style"
+          />
+
+    </LinearLayout>
+
+
+</LinearLayout>
