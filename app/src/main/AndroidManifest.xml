@@ -18,24 +18,22 @@
         android:name=".GlobalClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="MiiD Event Management"
+        android:label="Wayo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".HomeActivity"
-            android:label="Mii-D ONLINE TICKETING!">
+            android:label="Wayo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MySOAPCallActivity"
-            android:label="@string/title_activity_my_soapcall"></activity>
+      
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_my_soapcall"></activity>
+            android:label="@string/title_activity_my_soapcall" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -43,15 +41,15 @@
 
         <activity
             android:name=".MainActivity21"
-            android:label="SCAN TAGS"></activity>
+            android:label="Scan Tags" />
         <activity
             android:name=".BarcodeScanner"
-            android:label="Scan Barcode"></activity>
+            android:label="Scan Barcode" />
         <activity
             android:name=".CustomScannerActivity"
-            android:label="Scan Barcode"></activity>
-        <activity android:name=".MainActivity2"></activity>
-
+            android:label="Scan Barcode" />
+        <activity android:name=".OpenScanner" />
+        <activity android:name=".UploadActivity"></activity>
     </application>
 
 </manifest>

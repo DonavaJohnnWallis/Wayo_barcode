@@ -44,17 +44,17 @@
                     style="@style/info_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcodes \n ( Aditional information here more info )"
+                    android:text="Scan boxes to place on pallet for Outlet"
                    />
 
                 <Button
 
-                    android:id="@+id/Scanbarcode"
+                    android:id="@+id/ScanbarcodePP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:onClick="GoToScanbarcode"
-                    android:text="Start Scaning"
+                    android:text="Start Scanning"
                     android:background="@drawable/button_state"
                     style="@style/button_style" />
 
@@ -74,7 +74,8 @@
                     style="@style/info_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PlaceHolder2 \n ( Aditional information here more info )"
+                    android:visibility="visible"
+                    android:text="Scan boxes delivered to Outlet"
                    />
 
                 <Button
@@ -84,8 +85,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_state"
-                    android:onClick="placeholder2"
-                    android:text="Set Event Now" />
+                    android:onClick="GoToScanbarcode"
+                    android:text="Start Scanning" />
             </LinearLayout>
 
             <LinearLayout
@@ -94,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -101,7 +103,8 @@
                     style="@style/info_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Placeholder 3 \n ( Aditional information here more info )"
+
+                    android:text="Installer to Scan all boxes present at Outlet"
                     />
 
 
@@ -112,8 +115,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_state"
-                    android:onClick="placeholder3"
-                    android:text="Placeholder3" />
+                    android:onClick="GoToScanbarcode"
+                    android:text="Start Scanning" />
 
             </LinearLayout>
 
@@ -131,7 +134,7 @@
                     style="@style/info_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Placeholder 4 \n ( Aditional information here more info )"
+                    android:text="To Be Collected - Scan units at Outlet"
 
                     />
 
@@ -144,8 +147,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_state"
                     android:gravity="center"
-                    android:onClick="placeholder4"
-                    android:text="Placeholder4" />
+                    android:onClick="GoToScanbarcode"
+                    android:text="Start Scanning" />
             </LinearLayout>
 
 
@@ -160,20 +163,6 @@
         android:layout_weight="1"
         android:orientation="horizontal"
        >
-
-        <Button
-            android:id="@+id/home2"
-            style="@style/button_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/button_state"
-            android:onClick="ClickHome2"
-            android:text="Scan Barcodes"
-            android:layout_gravity="bottom"
-
-            />
-
         <Button
             android:id="@+id/home1"
             style="@style/button_style"
@@ -182,8 +171,22 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:background="@drawable/button_state"
-            android:onClick="ClickHome1"
-            android:text="Placeholder1" />
+            android:onClick="PackPallet"
+            android:text="Pack Pallet" />
+        <Button
+            android:id="@+id/home2"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_state"
+            android:onClick="Delivery"
+            android:text="Confirm Delivery"
+            android:layout_gravity="bottom"
+
+            />
+
+
 
     </LinearLayout>
 
@@ -200,8 +203,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_state"
-            android:onClick="ClickHome3"
-            android:text="Placeholder2"
+            android:onClick="PreInstallation"
+            android:text="Pre-Installation"
 
             />
 
@@ -212,8 +215,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="ClickHome4"
-            android:text="Placeholder3" />
+            android:onClick="Collection"
+            android:text="Collection" />
 
     </LinearLayout>
 

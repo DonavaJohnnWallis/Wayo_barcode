@@ -17,14 +17,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="5">
-
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Purpose"
+            android:id="@+id/txtPurpose"
+            android:text="Purpose"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:textColorHint="#000000"
+            android:textSize="24dp"
+            android:gravity="center_vertical|center_horizontal" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="TagNumber"
             android:id="@+id/editTagNumber"
-            android:text="TAG NUMBER"
+            android:text="|B| A |R |C |O |D |E|"
             android:textColor="#000000"
             android:textAlignment="center"
             android:textColorHint="#000000"
@@ -36,10 +46,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="scanBar"
-            android:text="Placedholder"
+            android:text="Scan Next"
             android:background="@drawable/button_state"
             style="@style/button_style"
           />
+
+        <Button
+            android:id="@+id/scanningComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="scanBar"
+            android:text="Scan Complete - Upload to Wayo"
+            android:background="@drawable/button_state"
+            style="@style/button_style"
+            />
+
+
+        <Button
+            android:id="@+id/errorDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="errorDelete"
+            android:text="Error - Redo"
+            android:background="@drawable/button_state"
+            style="@style/button_style"
+            />
+
+        <Button
+            android:id="@+id/resetAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Reset"
+            android:text="Reset All - Start Again"
+            android:background="@drawable/button_state"
+            style="@style/button_style"
+            />
+
 
     </LinearLayout>
 

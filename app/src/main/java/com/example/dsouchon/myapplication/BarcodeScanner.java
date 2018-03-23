@@ -1,32 +1,20 @@
 package com.example.dsouchon.myapplication;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 
 public class BarcodeScanner extends AppCompatActivity {
-
-
+    public String mPurpose;
+    public String mThisBarcode;
+public String mContentatedbarcodes;
 
 
 
@@ -49,8 +37,14 @@ public class BarcodeScanner extends AppCompatActivity {
         setContentView(R.layout.barcode_resault);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView editTagNumber = (TextView) findViewById(R.id.editTagNumber);
+        TextView txtPurpose = (TextView) findViewById(R.id.txtPurpose);
         Intent intent = getIntent();
+
         Bundle bd = intent.getExtras();
+        mPurpose  = Local.Get(getApplicationContext(), "Purpose");
+
+        txtPurpose.setText(mPurpose);
+
         if(bd != null)
         {
             String barcode = (String) bd.get("Barcode");
@@ -62,13 +56,23 @@ public class BarcodeScanner extends AppCompatActivity {
         String tagNo = getIntent().getStringExtra( "Barcode");
         editTagNumber.setText(tagNo) ;
 
+        mThisBarcode = editTagNumber.getText().toString();
+
+        mContentatedbarcodes = Local.Get(getApplicationContext(), "BarcodeList");
+
+        mContentatedbarcodes = String.format("%s;%s", mContentatedbarcodes, mThisBarcode);
+
+        Local.Set(getApplicationContext(), "BarcodeList", mContentatedbarcodes);
+
+        Toast.makeText(BarcodeScanner.this,String.format("Barcodes scanned so far: %s", mContentatedbarcodes), Toast.LENGTH_LONG).show();
+
         }
 
 
 
     public void scanBar(View view) {
 
-        Intent intent = new Intent(BarcodeScanner.this, MainActivity2.class );
+        Intent intent = new Intent(BarcodeScanner.this, OpenScanner.class );
         finish();
         startActivity(intent);
 
@@ -79,6 +83,58 @@ public class BarcodeScanner extends AppCompatActivity {
 
     }
 
+
+    public void scanningComplete(View view) {
+
+        Intent intent = new Intent(BarcodeScanner.this, UploadActivity.class );
+        finish();
+        startActivity(intent);
+
+        Button scancode = (Button)findViewById(R.id.scanner2);
+        scancode.setVisibility(View.VISIBLE);
+
+
+
+    }
+    public void errorDelete(View view) {
+
+        //remove latest barcode from the csv list
+        mContentatedbarcodes = mContentatedbarcodes.replace(mThisBarcode + ";", "");
+        //overwrite the saved csvList
+        Local.Set(getApplicationContext(), "BarcodeList", mContentatedbarcodes);
+
+        //Proceed with new scan
+
+        Intent intent = new Intent(BarcodeScanner.this, OpenScanner.class );
+        finish();
+        startActivity(intent);
+
+        Button scancode = (Button)findViewById(R.id.scanner2);
+        scancode.setVisibility(View.VISIBLE);
+
+
+
+    }
+
+    public void Reset(View view) {
+
+        //remove latest barcode from the csv list
+        mContentatedbarcodes = "";
+        //overwrite the saved csvList
+        Local.Set(getApplicationContext(), "BarcodeList", mContentatedbarcodes);
+
+        //Proceed with new scan
+
+        Intent intent = new Intent(BarcodeScanner.this, OpenScanner.class );
+        finish();
+        startActivity(intent);
+
+        Button scancode = (Button)findViewById(R.id.scanner2);
+        scancode.setVisibility(View.VISIBLE);
+
+
+
+    }
 
 
     }

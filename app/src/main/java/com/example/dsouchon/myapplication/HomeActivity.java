@@ -12,7 +12,7 @@ import android.widget.ViewFlipper;
 
 public class HomeActivity extends AppCompatActivity {
 
-
+    public String mPurpose;
     ViewFlipper viewFlipper;
 
 
@@ -25,10 +25,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
     //links child button to parent flipper layout and contains animations
-    public void ClickHome1(View view) {
+    public void PackPallet(View view) {
         viewFlipper.setDisplayedChild(1);
         viewFlipper.setDisplayedChild(viewFlipper.indexOfChild(findViewById(R.id.homescreen1)));
 
+        mPurpose = "PackPallet";
         //pop animation for layout
         LinearLayout Layoutpop1 = (LinearLayout)this.findViewById(R.id.homescreen1);
         Animation expandIn = AnimationUtils.loadAnimation(this, R.anim.expand_in);
@@ -37,10 +38,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    public void ClickHome2(View view) {
+    public void Delivery(View view) {
         viewFlipper.setDisplayedChild(2);
         viewFlipper.setDisplayedChild(viewFlipper.indexOfChild(findViewById(R.id.homescreen2)));
-
+        mPurpose = "Delivery";
         //pop animation for layout
         LinearLayout Layoutpop2 = (LinearLayout)this.findViewById(R.id.homescreen2);
         Animation expandIn = AnimationUtils.loadAnimation(this, R.anim.expand_in);
@@ -48,10 +49,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void ClickHome3(View view) {
+    public void PreInstallation(View view) {
         viewFlipper.setDisplayedChild(3);
         viewFlipper.setDisplayedChild(viewFlipper.indexOfChild(findViewById(R.id.homescreen3)));
-
+        mPurpose = "PreInstallation";
         //pop animation for layout
         LinearLayout Layoutpop2 = (LinearLayout)this.findViewById(R.id.homescreen3);
         Animation expandIn = AnimationUtils.loadAnimation(this, R.anim.expand_in);
@@ -59,10 +60,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void ClickHome4(View view) {
+    public void Collection(View view) {
         viewFlipper.setDisplayedChild(4);
         viewFlipper.setDisplayedChild(viewFlipper.indexOfChild(findViewById(R.id.homescreen4)));
-
+        mPurpose = "Collection";
         //pop animation for layout
         LinearLayout Layoutpop2 = (LinearLayout)this.findViewById(R.id.homescreen4);
         Animation expandIn = AnimationUtils.loadAnimation(this, R.anim.expand_in);
@@ -75,7 +76,9 @@ public class HomeActivity extends AppCompatActivity {
 
     public void GoToScanbarcode(View view) {
 
-        Intent intent = new Intent(HomeActivity.this, MainActivity2.class);
+        Intent intent = new Intent(HomeActivity.this, OpenScanner.class);
+        intent.putExtra("Purpose", mPurpose);
+        Local.Set(getApplicationContext(), "Purpose",  mPurpose);
         finish();
 
         startActivity(intent);
